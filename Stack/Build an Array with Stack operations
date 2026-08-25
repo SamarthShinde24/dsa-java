@@ -1,0 +1,22 @@
+class Solution {
+    public List<String> buildArray(int[] target, int n) {
+        List<String> result = new ArrayList<>();
+        int currentStreamNum = 1;
+        
+        for (int num : target) {
+            // While the stream number hasn't caught up to the current target number,
+            // we need to push it and immediately pop it.
+            while (currentStreamNum < num) {
+                result.add("Push");
+                result.add("Pop");
+                currentStreamNum++;
+            }
+            
+            // The stream number matches the target number, so we just push it.
+            result.add("Push");
+            currentStreamNum++;
+        }
+        
+        return result;
+    }
+}
